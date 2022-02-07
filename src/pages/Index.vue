@@ -4,7 +4,9 @@
       <div class="hero-body">
         <div class="container">
           <div class="logo">
-            <img src="https://res.cloudinary.com/ia-interactive/image/upload/v1644250701/logo_jwk7cp.jpg"/>
+            <a href="https://www.instagram.com/jj_adams_whodatband/" target="_blank">
+              <img src="https://res.cloudinary.com/ia-interactive/image/upload/v1644250701/logo_jwk7cp.jpg"/>
+            </a>
           </div>
         </div>
       </div>
