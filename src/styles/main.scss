@@ -33,6 +33,7 @@ $link-focus-border: $primary;
 
 html, body {
     background: $background;
+    background-image: url('../images/bg.png');
     color: #fff;
     font-family: 'Inter', sans-serif;
 }
@@ -52,8 +53,7 @@ html, body {
 }
 .navbar {
     position: fixed;
-    background: rgba($color: $background, $alpha: .86);
-    backdrop-filter: blur(10px) saturate(75%);
+    background: transparent;
     @media screen and (min-width: 1024px) {
         min-height: auto;
         padding: 10px;
@@ -61,7 +61,7 @@ html, body {
         top: 5px;
         left: 5px;
         &-end {
-            background: rgba($color: $white, $alpha: .1);
+            background: rgba($color: $black, $alpha: .95);
             border-radius: 1000px;
             overflow: hidden;
         }
@@ -163,4 +163,23 @@ html, body {
     @media screen and (max-width: 1023px) {
         padding-bottom: 0;
     }
+}
+
+.logo {
+    margin: 0 auto;
+    width: 75%;
+    min-width: 300px;
+    max-width: 1200px;
+}
+
+.hero-body {
+    z-index: 1;
+}
+
+.footer {
+    text-align: center;
+}
+.behind {
+    position: absolute;
+    top: 0;
 }

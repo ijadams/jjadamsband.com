@@ -1,8 +1,7 @@
 <template>
     <footer class="section has-text-centered-widescreen">
-        <div class="contaner">
-            Copyright &copy; {{new Date().getFullYear() }} by <g-link to="/">Yanuar Aditia</g-link><br/>
-            Powered by <a href="//gridsome.org">Gridsome</a> & <a href="//vercel.com">Vercel</a>
+        <div class="container" style="text-align: center">
+            Copyright &copy; {{new Date().getFullYear() }} by <g-link to="/">JJ ADAMS BAND</g-link><br/>
         </div>
     </footer>
 </template>

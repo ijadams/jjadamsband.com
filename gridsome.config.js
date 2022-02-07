@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Yanuar Aditia',
+  siteName: 'JJ ADAMS BAND',
   siteUrl: 'https://yanuaraditia.com',
   plugins: [
     {
@@ -13,7 +13,7 @@ module.exports = {
       options: {
         background_color: "#000000",
         icon_path: "./src/favicon.png",
-        name: "Yanuar Aditia",
+        name: "JJ ADAMS BAND",
         short_name: "Yanuar",
         theme_color: "#efabc0",
         lang: "en",

@@ -3,13 +3,36 @@
     <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container">
-          <div class="focus-breathe-relax">
-            <span>Focus /</span><br>
-            <span>Breathe /</span><br>
-            <span>Relax /</span>
+          <div class="logo">
+            <img src="https://res.cloudinary.com/ia-interactive/image/upload/v1644250701/logo_jwk7cp.jpg"/>
           </div>
         </div>
       </div>
+      <div class="behind" style="left: 25px;">
+        <img src="https://www.cameronsworld.net/img/sprites/sprite18/table/left.png"/>
+      </div>
+      <div class="behind" style="right: 25px;">
+        <img src="https://www.cameronsworld.net/img/content/20/25.gif"/>
+      </div>
+      <div class="behind" style="right: 25px; bottom: 0; top: auto;">>
+        <img src="https://www.cameronsworld.net/img/content/20/14.gif">
+      </div>
+      <div class="behind" style="right: 150px; bottom: 150px; top: auto;">>
+        <img src="https://www.cameronsworld.net/img/content/20/8.gif">
+      </div>
+
+      <div class="behind" style="left: 150px; bottom: 150px; top: auto;">>
+        <img src="https://www.cameronsworld.net/img/content/7/8.gif">
+      </div>
+
+      <div class="behind" style="left: 120px; bottom: 200px; top: auto;">>
+        <img src="https://www.cameronsworld.net/img/content/7/9.gif">
+      </div>
+
+      <div class="behind" style="left: 180px; bottom: 126px; top: auto;">>
+        <img src="https://www.cameronsworld.net/img/content/7/10.gif">
+      </div>
+
     </section>
   </Layout>
 </template>
@@ -17,8 +40,8 @@
 <script>
 export default {
   metaInfo: {
-    title: 'Here I am',
-    description: 'I’m from Kebumen, Indonesia and I have been working as a junior front-end programmer for more than 3 years and still love to do it every day. I’ve worked for Indonesian company called Tries and also my own Paparkir as a full-stack developer since 2018. I’ve been freelancing for the last 4 years, and right now I am looking forward to working with you!',
+    title: 'JJ ADAMS BAND',
+    description: 'JJ ADAMS BAND POP COUNTRY NEW ORLEANS LOUISANA',
   },
   data() {
     return {
