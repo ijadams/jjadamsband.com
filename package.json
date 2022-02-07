@@ -13,8 +13,8 @@
     "gatsby-cli": "^2.12.93",
     "gridsome": "^0.7.0",
     "gridsome-plugin-pwa": "^0.0.18",
-    "node-sass": "^4.14.1",
-    "sass-loader": "^10.0.2",
+    "sass": "^1.49.7",
+    "sass-loader": "^12.4.0",
     "vue-glitch": "^1.0.1",
     "vue-typed-js": "^0.1.2"
   },
