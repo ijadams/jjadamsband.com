@@ -6,19 +6,8 @@
 
 module.exports = {
   siteName: 'JJ ADAMS BAND',
-  siteUrl: 'https://yanuaraditia.com',
+  siteUrl: 'https://jjadamsband.com',
   plugins: [
-    {
-      use: "gridsome-plugin-manifest",
-      options: {
-        background_color: "#000000",
-        icon_path: "./src/favicon.png",
-        name: "JJ ADAMS BAND",
-        short_name: "JJ",
-        theme_color: "#efabc0",
-        lang: "en",
-      },
-    },
     {
       use: '@gridsome/plugin-sitemap',
       options: {
@@ -36,9 +25,6 @@ module.exports = {
           }
         }
       }
-    },
-    {
-      use: "gridsome-plugin-service-worker",
     },
   ],
   testEnvironment: 'node'

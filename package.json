@@ -14,7 +14,7 @@
     "gridsome": "^0.7.0",
     "gridsome-plugin-pwa": "^0.0.18",
     "sass": "^1.49.7",
-    "sass-loader": "^12.4.0",
+    "sass-loader": "^10.1.1",
     "vue-glitch": "^1.0.1",
     "vue-typed-js": "^0.1.2"
   },
