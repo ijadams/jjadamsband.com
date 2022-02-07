@@ -1,0 +1,166 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// Set your colors
+$primary: #ff5050;
+$primary-invert: findColorInvert($primary);
+$twitter: #4099FF;
+$twitter-invert: findColorInvert($twitter);
+$background: #111;
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: (
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "light": ($light, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($primary, $primary-invert),
+    "info": ($info, $info-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert),
+    "danger": ($danger, $danger-invert),
+    "twitter": ($twitter, $twitter-invert)
+);
+
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+html, body {
+    background: $background;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+::-webkit-scrollbar {
+    width: 0;
+    height: 5px;
+    &-track {
+        background: $primary;
+    }
+    &-thumb {
+        background: $background;
+    }
+}
+.wrapper {
+    height: 100vh;
+    position: relative;
+}
+.navbar {
+    position: fixed;
+    background: rgba($color: $background, $alpha: .86);
+    backdrop-filter: blur(10px) saturate(75%);
+    @media screen and (min-width: 1024px) {
+        min-height: auto;
+        padding: 10px;
+        right: 5px;
+        top: 5px;
+        left: 5px;
+        &-end {
+            background: rgba($color: $white, $alpha: .1);
+            border-radius: 1000px;
+            overflow: hidden;
+        }
+        .router-link-exact-active {
+            color: $black!important;
+            background-color: $primary!important;
+        }
+        &-item {
+            padding: 10px 25px;
+            border-radius: 1000px;
+            color: rgba($color: $white, $alpha: .5);
+            transition: all .2s ease-in-out;
+            &:hover {
+                color: $primary!important;
+                background-color: transparent!important;
+            }
+        }
+    }
+    @media screen and (max-width: 1023px) {
+        &-item, &-menu {
+            background: transparent!important;
+            box-shadow: none;
+            color: rgba($color: $white, $alpha: .5);
+        }
+        .router-link-exact-active {
+            color: $primary!important;
+        }
+        right: 0;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        &-burger {
+            span {
+                width: 20px;
+                left: calc(50% - 10px);
+                background: $primary;
+                height: 2px;
+                &:nth-child(1) {
+                    top: calc(50% - 8px);
+                }
+                &:nth-child(2) {
+                    top: calc(50% - 1px);
+                }
+                &:nth-child(3) {
+                    top: calc(50% + 6px);
+                }
+            }
+            &.is-active {
+                span {
+                    &:nth-child(3) {
+                        top: calc(50% - 4px);
+                    }
+                    &:nth-child(3) {
+                        top: calc(50% + 2px);
+                    }
+                }
+            }
+        }
+    }
+}
+.liner {
+    @media screen and (min-width: 1024px) {
+        border: 5px solid $black;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+}
+
+.focus-breathe-relax {
+    @media screen and (min-width: 1024px) {
+        font-size: 62px;
+    }
+    @media screen and (max-width: 1023px) {
+        font-size: 42px;
+    }
+    color: $primary;
+    font-weight: 600;
+}
+
+.progress.is-primary {
+    &::-webkit-progress-value {
+        background: $primary;
+        border-radius: 2px; 
+        background-size: 35px 20px, 100% 100%, 100% 100%;
+    }
+}
+.title {
+    &.is-1 {
+        @media screen and (max-width: 1023px) {
+            font-size: 28px;
+        }
+    }
+}
+.pb-0-mobile {
+    @media screen and (max-width: 1023px) {
+        padding-bottom: 0;
+    }
+}
