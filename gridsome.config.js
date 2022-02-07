@@ -14,7 +14,7 @@ module.exports = {
         background_color: "#000000",
         icon_path: "./src/favicon.png",
         name: "JJ ADAMS BAND",
-        short_name: "Yanuar",
+        short_name: "JJ",
         theme_color: "#efabc0",
         lang: "en",
       },
