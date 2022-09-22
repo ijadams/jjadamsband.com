@@ -15,14 +15,14 @@
     <meta property="og:url" content="https://metatags.io/">
     <meta property="og:title" content="JJ ADAMS - A COUNTRY ROCK MUSIC BAND // NEW ORLEANS, LA ">
     <meta property="og:description" content="Country superstar JJ ADAMS who The New York Times calls, “the most promising and influential new country star of the last five years,” is a multi-platinum, award-winning artist from New Orleans, LA. Adding to an already monumental career, Adams released his debut EP Liquid Cowboy, which debuted at #1 on the Billboard Top Country Albums chart. Since its release, the record continues to receive overwhelming acclaim with The Oregonian declaring Adams, “one of music’s mightiest voices and a hitmaking force arguably unlike any seen out of Nashville this century,” while Rolling Stone proclaims, “his detail-rich songs make Growin’ Up a big-time country album with a tip-jar-worthy intimacy” and Vulture praises, “a true country-music behemoth.” The new record follows 2019’s 3x Platinum What You See is What You Get as well as his 4x Platinum debut, This One’s For You, and features twelve songs including Adams’ current single, “Bayou Blackout,” which is currently top 10 at country radio and rising. The song adds to a series of groundbreaking years for the reigning CMA Entertainer of the Year, who recently extended his record-breaking streak at country radio as his previous single, “Lord Willin',” reached #1 on both the Billboard Country Airplay and Mediabase/Country Aircheck charts. This is Adams’ thirteenth-consecutive #1 single, yet another historic feat. A 6x CMA, 3x ACM and 3x Billboard Music Award-winner, Adams recently completed his first-ever headline stadium tour with sold-out shows at Denver’s Empower Field at Mile High, Seattle’s Lumen Field and Atlanta’s Mercedes-Benz Stadium. He will continue to tour throughout this year with his sold-out “Liquid Cowboy Tour” this fall.">
-    <meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+    <meta property="og:image" content="https://res.cloudinary.com/ia-interactive/image/upload/v1663863351/Screen_Shot_2022-09-19_at_8.15.16_PM_hf2kxs.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://metatags.io/">
     <meta property="twitter:title" content="JJ ADAMS - A COUNTRY ROCK MUSIC BAND // NEW ORLEANS, LA ">
     <meta property="twitter:description" content="Country superstar JJ ADAMS who The New York Times calls, “the most promising and influential new country star of the last five years,” is a multi-platinum, award-winning artist from New Orleans, LA. Adding to an already monumental career, Adams released his debut EP Liquid Cowboy, which debuted at #1 on the Billboard Top Country Albums chart. Since its release, the record continues to receive overwhelming acclaim with The Oregonian declaring Adams, “one of music’s mightiest voices and a hitmaking force arguably unlike any seen out of Nashville this century,” while Rolling Stone proclaims, “his detail-rich songs make Growin’ Up a big-time country album with a tip-jar-worthy intimacy” and Vulture praises, “a true country-music behemoth.” The new record follows 2019’s 3x Platinum What You See is What You Get as well as his 4x Platinum debut, This One’s For You, and features twelve songs including Adams’ current single, “Bayou Blackout,” which is currently top 10 at country radio and rising. The song adds to a series of groundbreaking years for the reigning CMA Entertainer of the Year, who recently extended his record-breaking streak at country radio as his previous single, “Lord Willin',” reached #1 on both the Billboard Country Airplay and Mediabase/Country Aircheck charts. This is Adams’ thirteenth-consecutive #1 single, yet another historic feat. A 6x CMA, 3x ACM and 3x Billboard Music Award-winner, Adams recently completed his first-ever headline stadium tour with sold-out shows at Denver’s Empower Field at Mile High, Seattle’s Lumen Field and Atlanta’s Mercedes-Benz Stadium. He will continue to tour throughout this year with his sold-out “Liquid Cowboy Tour” this fall.">
-    <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+    <meta property="twitter:image" content="https://res.cloudinary.com/ia-interactive/image/upload/v1663863351/Screen_Shot_2022-09-19_at_8.15.16_PM_hf2kxs.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,6 @@
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    <title>Webpack THREE.js Template</title>
     <style>
         body {
             margin: 0;
@@ -138,7 +137,6 @@
 <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/three.min.js"></script>
 <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/controls/OrbitControls.js"></script>
 <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/LoaderSupport.js"></script>
-<script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/OBJLoader2.js"></script>
 <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/GLTFLoader.js"></script>
 
 <script type="module">
@@ -155,6 +153,22 @@
     const controls = new OrbitControls(camera, renderer.domElement);
 
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    new GLTFLoader().load('https://ijadams.s3.amazonaws.com/ian.glb', ({scene: model}, animations) => {
+        scene.add(model);
+
+        model.scale.setScalar(6.0);
+
+        camera.lookAt(model.position);
+
+        controls.target.copy(model.position);
+
+        mesh = model;
+        const color = 0xFFFFFF;
+        const intensity = 3;
+        const light = new THREE.AmbientLight(color, intensity);
+        scene.add(light);
+    });
 
     const isMobile = function() {
         let check = false;
@@ -178,22 +192,6 @@
 
     scene.add(new THREE.HemisphereLight(0xffffcc, 0x333399, 1.0));
     camera.position.set(-2, 2, 10);
-
-    new GLTFLoader().load('https://ijadams.s3.amazonaws.com/ian.glb', ({scene: model}, animations) => {
-        scene.add(model);
-
-        model.scale.setScalar(6.0);
-
-        camera.lookAt(model.position);
-
-        controls.target.copy(model.position);
-
-        mesh = model;
-        const color = 0xFFFFFF;
-        const intensity = 3;
-        const light = new THREE.AmbientLight(color, intensity);
-        scene.add(light);
-    });
 
     const animate = () => {
         if (mesh) {
