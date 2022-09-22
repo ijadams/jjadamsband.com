@@ -288,8 +288,16 @@
         const videoTexture = new THREE.VideoTexture(v);
         scene.background = videoTexture
     } else {
-        const texture = new THREE.TextureLoader().load( "https://res.cloudinary.com/ia-interactive/image/upload/v1663861217/poster-jj-bg_cikajl.png" );
-        scene.background = texture
+        // const texture = new THREE.TextureLoader().load( "https://res.cloudinary.com/ia-interactive/image/upload/v1663861217/poster-jj-bg_cikajl.png" );
+        // scene.background = texture
+
+        const video = document.getElementById('video');
+        video.src = 'https://res.cloudinary.com/ia-interactive/video/upload/v1663859092/Liquid_Metal_Background_Video_Dark_Green_Motion_Background_Loop___Free_Stock_Footage-hqafQfFCHrA_1_sglclj.mp4'
+        video.play();
+        video.loop = true
+        const v = document.getElementById('video');
+        const videoTexture = new THREE.VideoTexture(v);
+        scene.background = videoTexture
     }
 
     scene.add(new THREE.HemisphereLight(0xffffcc, 0x333399, 1.0));
