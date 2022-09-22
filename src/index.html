@@ -121,8 +121,7 @@
 </main>
 <video id="video" crossorigin="anonymous" style="display: none;"
        type="video/mp4"
-       src="https://res.cloudinary.com/ia-interactive/video/upload/v1663859092/Liquid_Metal_Background_Video_Dark_Green_Motion_Background_Loop___Free_Stock_Footage-hqafQfFCHrA_1_sglclj.mp4"
-       controls="false" autoplay="true" muted="muted">>
+       controls="false" autoplay="true" muted="muted">
 </video>
 <footer>
     <ul>
@@ -143,6 +142,7 @@
 <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/GLTFLoader.js"></script>
 
 <script type="module">
+    console.log('%c wut da fuk is up pimp jajajaja - jj', 'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)');
 
     import * as THREE from 'https://cdn.skypack.dev/three@0.136.0';
     import {GLTFLoader} from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js';
@@ -163,11 +163,13 @@
     };
 
     if (!isMobile()) {
+        const sources = document.querySelectorAll('video source');
         const video = document.getElementById('video');
+        video.src = 'https://res.cloudinary.com/ia-interactive/video/upload/v1663859092/Liquid_Metal_Background_Video_Dark_Green_Motion_Background_Loop___Free_Stock_Footage-hqafQfFCHrA_1_sglclj.mp4'
         video.play();
         video.loop = true
-        const videoTexture = new THREE.VideoTexture(video);
-        console.log(videoTexture)
+        const v = document.getElementById('video');
+        const videoTexture = new THREE.VideoTexture(v);
         scene.background = videoTexture
     } else {
         const texture = new THREE.TextureLoader().load( "https://res.cloudinary.com/ia-interactive/image/upload/v1663861217/poster-jj-bg_cikajl.png" );
