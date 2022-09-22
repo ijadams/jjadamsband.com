@@ -6,8 +6,140 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <title>Webpack THREE.js Template</title>
+    <style>
+      html, body {
+        margin: 0;
+        height: 100%;
+      }
+      #c {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+    </style>
   </head>
   <body>
-    <canvas class="webgl"></canvas>
+    <canvas id="c"></canvas>
   </body>
+  <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/three.min.js"></script>
+  <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/controls/OrbitControls.js"></script>
+  <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/LoaderSupport.js"></script>
+  <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/OBJLoader2.js"></script>
+  <script src="https://threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/GLTFLoader.js"></script>
+
+<script>
+
+  function main() {
+    const canvas = document.querySelector('#c');
+    const renderer = new THREE.WebGLRenderer({canvas, antialias: true});
+
+    const fov = 45;  // field of view
+    const aspect = 2;  // the canvas default
+    const near = 0.1; // near clipping
+    const far = 1000; // far clipping, increased
+    const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+    camera.position.set(0, 10, 20);
+
+    const controls = new THREE.OrbitControls(camera, canvas);
+    controls.target.set(0, 5, 0);
+    controls.update();
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000); // can be written in the brackets 'black'
+
+    // all of this seems to relate to the grid
+    // divisions and sub divisions of the linked .png
+
+    // {
+    //   const planeSize = 40;
+    //
+    //   const loader = new THREE.TextureLoader();
+    //   const texture = loader.load('https://threejsfundamentals.org/threejs/resources/images/checker.png');
+    //   texture.wrapS = THREE.RepeatWrapping;
+    //   texture.wrapT = THREE.RepeatWrapping;
+    //   texture.magFilter = THREE.NearestFilter;
+    //   const repeats = planeSize / 2;
+    //   texture.repeat.set(repeats, repeats);
+    //
+    //   const planeGeo = new THREE.PlaneBufferGeometry(planeSize, planeSize);
+    //   const planeMat = new THREE.MeshPhongMaterial({
+    //     map: texture,
+    //     side: THREE.DoubleSide,
+    //   });
+    //   const mesh = new THREE.Mesh(planeGeo, planeMat);
+    //   mesh.rotation.x = Math.PI * -.5;
+    //   scene.add(mesh);
+    // }
+
+    // until here ^
+    // this is hemispherical lighting
+
+    {
+      const skyColor = 0xFFFFFF;  // rgb white
+      const groundColor = 0x000000;  // rgb black
+      const intensity = 1;
+      const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+      scene.add(light);
+    }
+
+    // this is directional lighting
+
+    {
+      const color = 0xFFFFFF;
+      const intensity = 1;
+      const light = new THREE.DirectionalLight(color, intensity);
+      light.position.set(0, 10, 0);
+      light.target.position.set(-5, 0, 0);
+      scene.add(light);
+      scene.add(light.target);
+    }
+
+    // until here ^
+    // this is the link to the .obj
+
+    {
+      const objLoader = new THREE.OBJLoader2();
+      objLoader.load('https://ijadams.s3.amazonaws.com/ian.obj', (event) => {
+        const root = event.detail.loaderRootNode;
+        // root.rotation.set(180, 180, 180)
+        root.scale.set(10, 10, 10)
+        console.log(root)
+        scene.add(root);
+      });
+    }
+
+    function resizeRendererToDisplaySize(renderer) {
+      const canvas = renderer.domElement;
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      const needResize = canvas.width !== width || canvas.height !== height;
+      if (needResize) {
+        renderer.setSize(width, height, false);
+      }
+      return needResize;
+    }
+
+    function render() {
+
+      if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+      }
+
+      renderer.render(scene, camera);
+
+      requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame(render);
+  }
+
+  main();
+
+</script>
 </html>
+
+
+
