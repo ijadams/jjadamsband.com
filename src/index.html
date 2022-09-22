@@ -39,7 +39,7 @@
         body {
             margin: 0;
             font-family: 'Inter', sans-serif !important;
-            cursor:none;
+            cursor: none;
         }
 
         main {
@@ -74,6 +74,8 @@
         ul {
             display: inline;
             text-decoration: none;
+            padding: 0;
+            margin: 0 auto;
         }
         ul li {
             display: inline-block;
@@ -132,6 +134,31 @@
             transform: translate(-50%, -50%);
             pointer-events: none;
             transition: width .3s, height .3s, opacity .3s;
+        }
+
+        @media screen and (max-width: 768px) {
+            .cursor, .cursor2 {
+                display: none !important;
+            }
+            body {
+                cursor: none;
+            }
+
+            h3 {
+                font-size: 1.314rem;
+            }
+
+            h1 {
+                font-size: 2.218rem;
+            }
+
+            footer ul li {
+                padding: 10px;
+            }
+            footer ul li a {
+                font-size: 1.4rem;
+            }
+
         }
 
         .hover {
@@ -235,6 +262,16 @@
             });
         })
 
+
+        const video = document.getElementById('video');
+        video.src = 'https://res.cloudinary.com/ia-interactive/video/upload/v1663859092/Liquid_Metal_Background_Video_Dark_Green_Motion_Background_Loop___Free_Stock_Footage-hqafQfFCHrA_1_sglclj.mp4'
+        video.play();
+        video.loop = true
+        const v = document.getElementById('video');
+        const videoTexture = new THREE.VideoTexture(v);
+        scene.background = videoTexture
+    } else {
+
         new GLTFLoader().load('https://ijadams.s3.amazonaws.com/ian.glb', ({scene: model}, animations) => {
             scene.add(model);
 
@@ -251,14 +288,6 @@
             scene.add(light);
         });
 
-        const video = document.getElementById('video');
-        video.src = 'https://res.cloudinary.com/ia-interactive/video/upload/v1663859092/Liquid_Metal_Background_Video_Dark_Green_Motion_Background_Loop___Free_Stock_Footage-hqafQfFCHrA_1_sglclj.mp4'
-        video.play();
-        video.loop = true
-        const v = document.getElementById('video');
-        const videoTexture = new THREE.VideoTexture(v);
-        scene.background = videoTexture
-    } else {
         const texture = new THREE.TextureLoader().load( "https://res.cloudinary.com/ia-interactive/image/upload/v1663861217/poster-jj-bg_cikajl.png" );
         scene.background = texture
     }
