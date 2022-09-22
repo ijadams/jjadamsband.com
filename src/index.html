@@ -223,6 +223,23 @@
         return check;
     };
 
+
+    new GLTFLoader().load('https://ijadams.s3.amazonaws.com/ian.glb', ({scene: model}, animations) => {
+        scene.add(model);
+
+        model.scale.setScalar(6.0);
+
+        camera.lookAt(model.position);
+
+        controls.target.copy(model.position);
+
+        mesh = model;
+        const color = 0xFFFFFF;
+        const intensity = 3;
+        const light = new THREE.AmbientLight(color, intensity);
+        scene.add(light);
+    });
+
     if (!isMobile()) {
 
 
@@ -271,23 +288,6 @@
         const videoTexture = new THREE.VideoTexture(v);
         scene.background = videoTexture
     } else {
-
-        new GLTFLoader().load('https://ijadams.s3.amazonaws.com/ian.glb', ({scene: model}, animations) => {
-            scene.add(model);
-
-            model.scale.setScalar(6.0);
-
-            camera.lookAt(model.position);
-
-            controls.target.copy(model.position);
-
-            mesh = model;
-            const color = 0xFFFFFF;
-            const intensity = 3;
-            const light = new THREE.AmbientLight(color, intensity);
-            scene.add(light);
-        });
-
         const texture = new THREE.TextureLoader().load( "https://res.cloudinary.com/ia-interactive/image/upload/v1663861217/poster-jj-bg_cikajl.png" );
         scene.background = texture
     }
